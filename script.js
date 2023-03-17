@@ -21,7 +21,7 @@ class Calculator {
     if (this.prevOperand !== "") this.calculate();
 
     this.operation = operator;
-    this.prevOperand = this.currOperand.toString() + " " + operator.toString();
+    this.prevOperand = this.currOperand;
     this.currOperand = "";
   }
 
@@ -66,8 +66,12 @@ class Calculator {
   }
 
   update() {
-    this.prevOperandText.innerText = this.getDisplayNumber(this.prevOperand);
     this.currOperandText.innerText = this.getDisplayNumber(this.currOperand);
+    if (this.operation != null)
+      this.prevOperandText.innerText = `${this.getDisplayNumber(
+        this.prevOperand
+      )} ${this.operation}`;
+    else this.prevOperandText.innerText = "";
   }
 }
 
